@@ -1,0 +1,9 @@
+vga_timing u_vga_timing(
+    .pix_clk  (pix_clk),
+    .rst_n    (sys_rst_n & pll_locked),
+    .hsync    (hsync),
+    .vsync    (vsync),
+    .valid    (valid),
+    .h_cnt    (h_cnt),
+    .v_cnt    (v_cnt)
+);
