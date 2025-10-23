@@ -7,7 +7,6 @@ char_generator u_char_generator(
     .pixel_data (pixel_data)
 );
 
-
 localparam BLACK    = 16'h0000;  
 localparam RED      = 16'hF800;   
 localparam GREEN    = 16'h07E0;   
@@ -16,7 +15,6 @@ localparam YELLOW   = 16'hFFE0;
 localparam CYAN     = 16'h07FF;   
 localparam MAGENTA  = 16'hF81F;   
 localparam WHITE    = 16'hFFFF;  
-
 
 reg [15:0] char_color;
 always @(*) begin
@@ -37,10 +35,7 @@ always @(*) begin
     end
 end
 
-
 assign rgb_16bit = (valid && pixel_data) ? char_color : BLACK;
-
-
 assign red   = rgb_16bit[15:11];  
 assign green = rgb_16bit[10:5];   
 assign blue  = rgb_16bit[4:0];    
