@@ -1,0 +1,33 @@
+timescale 1ns / 1ps
+module tb_vga_disp();
+
+reg CLK;
+reg rst_n;
+wire hsync,vsync;
+wire [4:0]red,blue;
+wire [5:0] green;
+    parameter PERIOD = 20;
+
+   always begin
+      CLK = 1'b0;
+      #(PERIOD/2) CLK = 1'b1;
+      #(PERIOD/2);
+   end   
+
+initial begin 
+	rst_n = 0;
+   # 100 rst_n = 1;
+end
+
+
+vga_ustm_top vga_ustm_top_inst
+(
+	.sys_clk(CLK) ,	// input  sys_clk_sig
+	.sys_rst_n(rst_n) ,	// input  sys_rst_n_sig
+	.hsync(hsync) ,	// output  hsync_sig
+	.vsync(vsync) ,	// output  vsync_sig
+	.red(red) ,	// output [4:0] red_sig
+	.green(green) ,	// output [5:0] green_sig
+	.blue(blue) 	// output [4:0] blue_sig
+);
+endmodule
